@@ -35,14 +35,8 @@ body {
 
 /* HERO */
 .hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  background: linear-gradient(to right, #0b1220, #111a33);
-  padding-top: 80px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
@@ -62,7 +56,7 @@ body {
   50% { transform: translateY(-10px); }
 }
 
-/* FLOATING TEXT (MAIN TAGLINE) */
+/* FLOATING TEXT */
 .floating-text {
   font-size: 22px;
   color: #a3b3c7;
@@ -114,7 +108,7 @@ section {
   bottom: -10px;
 }
 
-/* CARD BOX */
+/* CARD */
 .card-box {
   background: #121a2b;
   padding: 22px;
@@ -129,7 +123,7 @@ section {
   box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
 }
 
-/* PROJECT LINK */
+/* LINKS */
 .card-box a {
   color: #00d4ff;
   text-decoration: none;
@@ -139,7 +133,10 @@ section {
   text-decoration: underline;
 }
 
-/* CHATBOX */
+/* =======================
+   CHATBOX (DESKTOP)
+======================= */
+
 .chatbox {
   position: fixed;
   bottom: 90px;
@@ -149,7 +146,9 @@ section {
   border-radius: 12px;
   overflow: hidden;
   display: none;
+  flex-direction: column;
   box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  z-index: 9999;
 }
 
 .chat-header {
@@ -160,10 +159,11 @@ section {
 }
 
 .chat-body {
-  height: 250px;
+  flex: 1;
   overflow-y: auto;
   padding: 10px;
   font-size: 14px;
+  height: 250px;
 }
 
 .chat-input {
@@ -200,46 +200,34 @@ section {
   font-size: 22px;
   cursor: pointer;
   transition: 0.3s;
+  z-index: 10000;
 }
 
 .chat-toggle:hover {
   transform: scale(1.1);
 }
+
+/* =======================
+   RESPONSIVE
+======================= */
+
 @media (max-width: 1024px) {
-  .hero h1 {
-    font-size: 42px;
-  }
-
-  .hero-icon {
-    font-size: 55px;
-  }
-
-  section {
-    padding: 60px 6%;
-  }
+  .hero h1 { font-size: 42px; }
+  .hero-icon { font-size: 55px; }
+  section { padding: 60px 6%; }
 }
 
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 32px;
-  }
-
-  .hero-icon {
-    font-size: 45px;
-  }
+  .hero h1 { font-size: 32px; }
+  .hero-icon { font-size: 45px; }
 
   .floating-text {
     font-size: 16px;
     text-align: center;
   }
 
-  .section-title {
-    font-size: 24px;
-  }
-
-  .card-box {
-    padding: 15px;
-  }
+  .section-title { font-size: 24px; }
+  .card-box { padding: 15px; }
 
   .navbar .container {
     flex-direction: column;
@@ -250,87 +238,38 @@ section {
     font-size: 22px !important;
     margin: 0 8px;
   }
+
+  /* CHAT FULL SCREEN FIX */
+  .chatbox {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    display: none; /* IMPORTANT: keep hidden until opened */
+  }
+
+  .chat-body {
+    height: auto;
+  }
 }
 
 @media (max-width: 480px) {
-  .hero h1 {
-    font-size: 26px;
-  }
-
-  .hero-icon {
-    font-size: 38px;
-  }
+  .hero h1 { font-size: 26px; }
+  .hero-icon { font-size: 38px; }
 
   .floating-text {
     font-size: 14px;
     padding: 0 10px;
   }
 
-  section {
-    padding: 50px 5%;
-  }
-
-  .chatbox {
-    width: 90%;
-    right: 5%;
-  }
+  section { padding: 50px 5%; }
 
   .chat-toggle {
     width: 50px;
     height: 50px;
     font-size: 18px;
-  }
-}
-/* =======================
-   CHATBOT RESPONSIVE FIX
-   ======================= */
-
-/* Tablet */
-@media (max-width: 1024px) {
-  .chatbox {
-    width: 280px;
-    bottom: 80px;
-    right: 15px;
-  }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .chatbox {
-    width: 90%;
-    right: 5%;
-    bottom: 80px;
-  }
-
-  .chat-body {
-    height: 220px;
-    font-size: 13px;
-  }
-
-  .chat-input input {
-    font-size: 14px;
-  }
-
-  .chat-input button {
-    font-size: 14px;
-  }
-
-  .chat-toggle {
-    width: 50px;
-    height: 50px;
-    font-size: 18px;
-  }
-}
-
-/* Small mobile */
-@media (max-width: 480px) {
-  .chatbox {
-    width: 95%;
-    right: 2.5%;
-    bottom: 70px;
-  }
-
-  .chat-body {
-    height: 200px;
   }
 }
