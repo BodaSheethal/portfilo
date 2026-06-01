@@ -1,12 +1,10 @@
- function toggleChat() {
+function toggleChat() {
   const chatbox = document.getElementById("chatbox");
   chatbox.classList.toggle("active");
 }
-  
 
-
-function sendMessage() {
-  const input = document.getElementById("userInput");
+function sendMsg() {
+  const input = document.getElementById("msg");
   const chatBody = document.getElementById("chatBody");
 
   const message = input.value.trim();
@@ -18,7 +16,7 @@ function sendMessage() {
   userMsg.innerText = message;
   chatBody.appendChild(userMsg);
 
-  // bot reply (simple demo)
+  // bot reply
   const botMsg = document.createElement("div");
   botMsg.classList.add("msg", "bot");
 
@@ -31,16 +29,15 @@ function sendMessage() {
   input.value = "";
   chatBody.scrollTop = chatBody.scrollHeight;
 }
-const input = document.getElementById("msg");
 
-input.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    event.preventDefault(); // prevents form-like behavior
-    sendMsg(); // call your existing function
-  }
-});
-document.getElementById("msg").addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    sendMsg();
-  }
+// ENTER KEY SUPPORT (ONLY ONCE)
+document.addEventListener("DOMContentLoaded", function () {
+  const input = document.getElementById("msg");
+
+  input.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      sendMsg();
+    }
+  });
 });
