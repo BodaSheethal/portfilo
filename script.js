@@ -31,3 +31,16 @@ function sendMessage() {
   input.value = "";
   chatBody.scrollTop = chatBody.scrollHeight;
 }
+const input = document.getElementById("msg");
+
+input.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault(); // prevents form-like behavior
+    sendMsg(); // call your existing function
+  }
+});
+document.getElementById("msg").addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    sendMsg();
+  }
+});
