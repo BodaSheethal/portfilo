@@ -1,12 +1,9 @@
-function toggleChat() {
+ function toggleChat() {
   const chatbox = document.getElementById("chatbox");
-
-  if (chatbox.style.display === "flex") {
-    chatbox.style.display = "none";
-  } else {
-    chatbox.style.display = "flex";
-  }
+  chatbox.classList.toggle("active");
 }
+  
+
 
 function sendMessage() {
   const input = document.getElementById("userInput");
