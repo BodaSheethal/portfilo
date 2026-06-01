@@ -281,3 +281,56 @@ section {
     font-size: 18px;
   }
 }
+/* =======================
+   CHATBOT RESPONSIVE FIX
+   ======================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .chatbox {
+    width: 280px;
+    bottom: 80px;
+    right: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .chatbox {
+    width: 90%;
+    right: 5%;
+    bottom: 80px;
+  }
+
+  .chat-body {
+    height: 220px;
+    font-size: 13px;
+  }
+
+  .chat-input input {
+    font-size: 14px;
+  }
+
+  .chat-input button {
+    font-size: 14px;
+  }
+
+  .chat-toggle {
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .chatbox {
+    width: 95%;
+    right: 2.5%;
+    bottom: 70px;
+  }
+
+  .chat-body {
+    height: 200px;
+  }
+}
