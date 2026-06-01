@@ -43,6 +43,11 @@ body {
   z-index: 9999;
 }
 
+/* ACTIVE STATE */
+.chatbox.active {
+  display: flex;
+}
+
 /* HEADER */
 .chat-header {
   background: #00d4ff;
@@ -97,30 +102,7 @@ body {
   margin-left: auto;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-
- .chatbox {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  width: 320px;
-  height: 450px;
-  background: #111827;
-  border-radius: 12px;
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-  z-index: 99999;
-}
-
-/* ACTIVE STATE (IMPORTANT FIX) */
-.chatbox.active {
-  display: flex;
-}
-
-/* MOBILE FULLSCREEN FIX */
+/* MOBILE FULLSCREEN */
 @media (max-width: 768px) {
   .chatbox.active {
     top: 0;
@@ -131,5 +113,4 @@ body {
     height: 100vh;
     border-radius: 0;
   }
-}
 }

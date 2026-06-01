@@ -1,8 +1,7 @@
 function toggleChat() {
-  const chatbox = document.getElementById("chatbox");
-  chatbox.classList.toggle("active");
+  const box = document.getElementById("chatbox");
+  box.classList.toggle("active");
 }
-
 function sendMsg() {
   const input = document.getElementById("msg");
   const chatBody = document.getElementById("chatBody");

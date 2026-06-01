@@ -325,6 +325,16 @@ function sendMsg(){
   chat.innerHTML += `<div style='color:#00d4ff'>Bot: ${reply}</div>`;
   input.value = "";
 }
+document.addEventListener("DOMContentLoaded", function () {
+  const input = document.getElementById("msg");
+
+  input.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      sendMsg();
+    }
+  });
+});
 </script>
 
 </body>
