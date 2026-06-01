@@ -1,38 +1,36 @@
-const texts = [
-  "a Final-Year CSE Student",
-  "an Aspiring Developer",
-  "a Web Developer"
-];
+function toggleChat() {
+  const chatbox = document.getElementById("chatbox");
 
-let count = 0;
-let index = 0;
-
-function type() {
-  const current = texts[count];
-  const text = current.slice(0, ++index);
-
-  document.querySelector(".dynamic-text").textContent = text;
-
-  if (text.length === current.length) {
-    setTimeout(() => {
-      index = 0;
-      count = (count + 1) % texts.length;
-      type();
-    }, 1500);
+  if (chatbox.style.display === "flex") {
+    chatbox.style.display = "none";
   } else {
-    setTimeout(type, 100);
+    chatbox.style.display = "flex";
   }
 }
 
-type();
+function sendMessage() {
+  const input = document.getElementById("userInput");
+  const chatBody = document.getElementById("chatBody");
 
-/* ONLY ONE SIMPLE ANIMATION */
-const about = document.querySelector(".about-container");
+  const message = input.value.trim();
+  if (message === "") return;
 
-window.addEventListener("scroll", () => {
-  if (!about) return;
+  // user message
+  const userMsg = document.createElement("div");
+  userMsg.classList.add("msg", "user");
+  userMsg.innerText = message;
+  chatBody.appendChild(userMsg);
 
-  if (about.getBoundingClientRect().top < window.innerHeight - 100) {
-    about.classList.add("show");
-  }
-});
+  // bot reply (simple demo)
+  const botMsg = document.createElement("div");
+  botMsg.classList.add("msg", "bot");
+
+  setTimeout(() => {
+    botMsg.innerText = "Got it 👍 (This is demo reply)";
+    chatBody.appendChild(botMsg);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }, 500);
+
+  input.value = "";
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
